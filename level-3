@@ -1,0 +1,23 @@
+(ns level-3
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+
+(d/q '[:find ?v
+       :where [_ :author/first+last-name ?v]] db)
+       
+       
+       
+       
+       solution --->
+       
+       
+       (ns level-3
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+​
+(d/q '[:find ?e ?v 
+       :where [?e :author/first+last-name ?v]] db)
+       
+       
