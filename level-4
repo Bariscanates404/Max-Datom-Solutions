@@ -1,0 +1,21 @@
+(ns level-4
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+​
+(d/q '[:find ?v
+       :where [_ :book/publication-date ?v]] db)
+       
+       
+       solution --->
+       
+       (ns level-4
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+
+(d/q '[:find ?v
+       :where 
+       		[?e :book/name "Process and Grow RAM"]
+       		[?e :book/publication-date ?v]]
+       		 db)
