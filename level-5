@@ -15,3 +15,15 @@
 ​
 (d/q '[:find (pull ?e [*])
        :where [?e :book/author]] db)
+
+
+
+2 ----->
+
+(ns level-5
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+
+(d/q '[:find (pull ?e [:book/name {:book/author [:author/first-name :author/last-name]}])
+       :where [?e :book/author]] db)
