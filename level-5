@@ -1,0 +1,17 @@
+(ns level-5
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+
+(d/q '[:find ?e
+       :where [?e :book/author]] db)
+       
+       solution -->
+       
+       (ns level-5
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+​
+(d/q '[:find (pull ?e [*])
+       :where [?e :book/author]] db)
