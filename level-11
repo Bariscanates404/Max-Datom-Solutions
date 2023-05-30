@@ -1,0 +1,25 @@
+(ns level-11
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+
+(d/q '[:find  ?user-name
+       :where [?user :user/first+last-name ?user-name]] db)
+       
+       
+       
+       solution ---->
+       
+       
+       
+       (ns level-11
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+
+
+(d/q '[:find (count ?pt) ?user-name
+         :where [?user :user/first+last-name ?user-name]
+                [?pt :post/author ?user]
+                (not [?pt :post/dislikes _])
+         ] db)
