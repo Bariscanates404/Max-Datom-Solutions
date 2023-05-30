@@ -1,0 +1,25 @@
+(ns level-12
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+
+(defn comment-count-str [x]
+  (str "Comment Count: " (count x)))
+
+(d/q '[:find  (pull ?posts [{:post/author [:user/first+last-name]}])
+       :where [?posts :post/author _]] db)
+
+
+solution ----->
+
+
+(ns level-12
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+
+(defn comment-count-str [x]
+  (str "Comment Count: " (count x)))
+
+(d/q '[:find  (pull ?posts [{:post/author [:user/first+last-name]}  :user/first+last-name [:post/comments :xform level-12/comment-count-str ]])
+       :where [?posts :post/author _]] db)
