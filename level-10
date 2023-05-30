@@ -1,0 +1,24 @@
+(ns level-10
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+
+(d/q '[:find  ?user-name
+       :where [?user :user/id #uuid "1B341635-BE22-4ACC-AE5B-D81D8B1B7678"]
+              [?user :user/first+last-name ?user-name]] db)
+              
+              
+              
+              solution ------>
+              
+              
+ 
+(ns level-10
+  (:require
+    [datomic.client.api :as d]
+    [max-datom.connections :refer [db]]))
+​
+(d/q '[:find  ?user-name (count ?posts)
+       :where [?user :user/id #uuid "1B341635-BE22-4ACC-AE5B-D81D8B1B7678"]
+              [?user :user/first+last-name ?user-name]
+              [?posts :post/author ?user]] db)
